@@ -6,6 +6,7 @@
 import React from 'react';
 import { MatrixSettings } from './types';
 import { CubeMatrixCanvas } from './components/CubeMatrixCanvas';
+import ShowcaseAdmin from './pages/ShowcaseAdmin';
 
 const SETTINGS: MatrixSettings = {
   gridCols: 244, // 144 + 50 on left + 50 on right
@@ -15,6 +16,31 @@ const SETTINGS: MatrixSettings = {
 };
 
 export default function App() {
+  const [isAdmin, setIsAdmin] = React.useState(() => {
+    if (typeof window === 'undefined') return false;
+    const path = window.location.pathname.replace(/\/+$/, '');
+    const hash = window.location.hash.replace(/^#\/?/, '');
+    return path === '/showcase-admin' || hash === 'showcase-admin';
+  });
+
+  React.useEffect(() => {
+    const handleLocationChange = () => {
+      const path = window.location.pathname.replace(/\/+$/, '');
+      const hash = window.location.hash.replace(/^#\/?/, '');
+      setIsAdmin(path === '/showcase-admin' || hash === 'showcase-admin');
+    };
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+    };
+  }, []);
+
+  if (isAdmin) {
+    return <ShowcaseAdmin />;
+  }
+
   return (
     <main className="relative w-screen h-screen overflow-hidden bg-[#030407] select-none">
       <div className="absolute top-4 right-4 z-20">

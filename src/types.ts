@@ -66,3 +66,24 @@ export interface ShowcaseSubmission {
 
 export type ShowcaseFormErrors = Partial<Record<keyof ShowcaseSubmission | 'form', string>>;
 
+export interface ShowcaseDbRecord {
+  id: string;
+  team_name: string;
+  team_representative: string;
+  contact_email: string;
+  organization: string;
+  team_members: string;
+  social_handles: string | null;
+  project_name: string;
+  short_description: string;
+  problem_statement: string;
+  solution_approach: string;
+  tech_stack: string;
+  repository_url: string;
+  prototype_url: string;
+  demo_video_url: string;
+  documentation_url: string | null;
+  consent_given: boolean;
+  created_at: string;
+}
+

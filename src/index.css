@@ -6,4 +6,29 @@ body,
   overscroll-behavior: none;
   overscroll-behavior-y: none;
   overscroll-behavior-x: none;
+  color-scheme: dark;
+}
+
+/* Custom dark-themed scrollbars for horizontal and vertical containers */
+.dark-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #3f3f46 #09090b;
+}
+
+.dark-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark-scrollbar::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+.dark-scrollbar::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+
+.dark-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
 }

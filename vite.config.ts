@@ -20,6 +20,7 @@ export default defineConfig(() => {
         input: {
           main: 'index.html',
           showcase: 'showcase/index.html',
+          showcaseAdmin: 'showcase-admin/index.html',
         },
       },
     },
