@@ -1,4 +1,5 @@
 import { ShowcaseSubmission } from '../types';
+import { supabase } from '../lib/supabase';
 
 /**
  * Service handler for Hackers Occupied Pune Project Showcase Submissions.
@@ -115,40 +116,47 @@ export async function submitShowcaseProject(
   }
 
   try {
-    // Artificial latency for authentic submission feedback
-    await new Promise((resolve) => setTimeout(resolve, 800));
-
     const sanitized = sanitizeSubmission(submission);
-    const submissionWithMetadata: ShowcaseSubmission = {
-      ...sanitized,
-      id: `submission-${Date.now()}-${Math.random().toString(36).substring(2, 8)}`,
-      createdAt: new Date().toISOString(),
-    };
 
-    try {
-      const existing = readStoredSubmissions();
-      existing.unshift(submissionWithMetadata);
-      // Cap how much we keep locally so a burst of submissions (or one
-      // very determined user) can't exhaust the browser's storage quota.
-      const trimmed = existing.slice(0, MAX_STORED_SUBMISSIONS);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(trimmed));
-    } catch (storageErr) {
-      // A failed write here means the submission was never actually saved,
-      // so we must not report success back to the user even though the
-      // rest of the flow completed — otherwise they'd believe their
-      // project was archived when it wasn't.
-      const isQuotaError =
-        storageErr instanceof DOMException &&
-        (storageErr.name === 'QuotaExceededError' || storageErr.name === 'NS_ERROR_DOM_QUOTA_REACHED');
+    const { error } = await supabase
+      .from('showcase_submissions')
+      .insert([
+        {
+          team_name: sanitized.teamName,
+          team_representative: sanitized.teamRepresentative,
+          contact_email: sanitized.contactEmail,
+          organization: sanitized.organization,
+          team_members: sanitized.teamMembers,
+          social_handles: sanitized.socialHandles || null,
+
+          project_name: sanitized.projectName,
+          short_description: sanitized.shortDescription,
+          problem_statement: sanitized.problemStatement,
+          solution_approach: sanitized.solutionApproach,
+          tech_stack: sanitized.techStack,
+
+          repository_url: sanitized.repositoryUrl,
+          prototype_url: sanitized.prototypeUrl,
+          demo_video_url: sanitized.demoVideoUrl,
+          documentation_url: sanitized.documentationUrl || null,
+
+          consent_given: sanitized.consentGiven,
+        },
+      ]);
+
+    if (error) {
       return {
         success: false,
-        error: isQuotaError
-          ? 'Your browser storage is full. Please clear some space and try again.'
-          : 'Could not save your submission locally. Please try again.',
+        error: error.message || 'Failed to submit showcase project.',
       };
     }
 
     recordSubmissionTimestamp(submission.contactEmail);
+
+    const submissionWithMetadata: ShowcaseSubmission = {
+      ...sanitized,
+      createdAt: new Date().toISOString(),
+    };
 
     return {
       success: true,

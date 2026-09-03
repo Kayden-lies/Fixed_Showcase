@@ -758,7 +758,7 @@ export default function ShowcaseForm() {
                   {/* Documentation / Presentation */}
                   <div className="space-y-1.5" data-has-error={!!errors.documentationUrl}>
                     <label htmlFor="documentationUrl" className="block text-xs font-medium text-zinc-300">
-                      Presentation / Documentation <span className="text-zinc-500 font-normal">(Optional)</span>
+                      Documentary <span className="text-zinc-500 font-normal">(Optional)</span>
                     </label>
                     <input
                       id="documentationUrl"
@@ -766,7 +766,7 @@ export default function ShowcaseForm() {
                       type="url"
                       value={formData.documentationUrl}
                       onChange={handleInputChange}
-                      placeholder="https://docs.google.com/presentation/... or Notion"
+                      placeholder="https://youtube.com/presentation/... or Notion"
                     maxLength={FIELD_LIMITS.documentationUrl}
                       className={`w-full px-3.5 py-2.5 rounded-lg bg-zinc-950 border ${
                         errors.documentationUrl ? 'border-red-500 focus:ring-1 focus:ring-red-500' : 'border-zinc-800 focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500'
