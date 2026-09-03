@@ -5,5 +5,5 @@ const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || 
 
 export const supabase = createClient(
   supabaseUrl,
-  supabasePublishableKey || 'placeholder-anon-key'
+  supabasePublishableKey || 'sb_publishable_06bgVNYUOoIMBaxWQDQBaw_ckpUeg4f'
 );
