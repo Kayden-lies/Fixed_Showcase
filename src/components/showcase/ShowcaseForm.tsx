@@ -239,7 +239,7 @@ export default function ShowcaseForm() {
               </h2>
 
               <p className="text-zinc-300 text-sm sm:text-base leading-relaxed mb-6">
-                Thank you for submitting your project from Hackers Occupied Pune. The AIDN × Genesis team will review your submission and feature selected projects across our official platforms and community channels.
+                Thank you for submitting your project from Hackers Occupied Pune. The AIDN team will review your submission and feature selected projects across our official platforms and community channels. If any further details are needed, we’ll be in touch.
               </p>
 
               <div className="w-full bg-zinc-950 border border-zinc-800/80 rounded-lg p-5 text-left mb-6 space-y-3.5">
