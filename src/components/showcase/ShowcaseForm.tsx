@@ -45,6 +45,9 @@ const REQUIRED_FIELDS: (keyof ShowcaseSubmission)[] = [
   'solutionApproach',
   'techStack',
   'consentGiven',
+  'repositoryUrl',
+  'prototypeUrl',
+  'demoVideoUrl',
 ];
 
 export default function ShowcaseForm() {
