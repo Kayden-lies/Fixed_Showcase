@@ -686,7 +686,7 @@ export default function ShowcaseForm() {
                   {/* GitHub / Repository */}
                   <div className="space-y-1.5" data-has-error={!!errors.repositoryUrl}>
                     <label htmlFor="repositoryUrl" className="block text-xs font-medium text-zinc-300">
-                      GitHub / Code Repository <span className="text-zinc-500 font-normal">*</span>
+                      GitHub / Code Repository <span className="text-red-400">*</span>
                     </label>
                     <input
                       id="repositoryUrl"
@@ -710,7 +710,7 @@ export default function ShowcaseForm() {
                   {/* Prototype / Live Project */}
                   <div className="space-y-1.5" data-has-error={!!errors.prototypeUrl}>
                     <label htmlFor="prototypeUrl" className="block text-xs font-medium text-zinc-300">
-                      Live Prototype / Demo URL <span className="text-zinc-500 font-normal">*</span>
+                      Live Prototype / Demo URL <span className="text-red-400">*</span>
                     </label>
                     <input
                       id="prototypeUrl"
@@ -734,7 +734,7 @@ export default function ShowcaseForm() {
                   {/* Demo Video */}
                   <div className="space-y-1.5" data-has-error={!!errors.demoVideoUrl}>
                     <label htmlFor="demoVideoUrl" className="block text-xs font-medium text-zinc-300">
-                      Demo / Walkthrough Video <span className="text-zinc-500 font-normal">*</span>
+                      Demo / Walkthrough Video <span className="text-red-400">*</span>
                     </label>
                     <input
                       id="demoVideoUrl"
