@@ -32,7 +32,7 @@ export default function ShowcaseAdmin() {
   const [checkingSession, setCheckingSession] = useState(true);
 
   // Login form state
-  const [loginEmail, setLoginEmail] = useState('admin@aidn.example');
+  const [loginEmail, setLoginEmail] = useState('admin@aidn.co.in');
   const [loginPassword, setLoginPassword] = useState('');
   const [loginError, setLoginError] = useState<string | null>(null);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
