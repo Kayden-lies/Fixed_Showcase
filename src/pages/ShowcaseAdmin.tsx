@@ -222,8 +222,13 @@ export default function ShowcaseAdmin() {
         <div className="w-full max-w-md bg-zinc-950 border border-zinc-800/90 rounded-2xl p-6 sm:p-8 shadow-2xl space-y-6">
           {/* Header */}
           <div className="text-center space-y-2">
-            <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center mx-auto text-blue-400 shadow-inner">
-              <Lock className="w-5 h-5" />
+            <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center mx-auto shadow-inner p-1.5">
+              <img
+                src="/Logo_transparent.png"
+                alt="Logo"
+                className="w-full h-full object-contain"
+                referrerPolicy="no-referrer"
+              />
             </div>
             <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-white font-mono">
               Administrator Login
